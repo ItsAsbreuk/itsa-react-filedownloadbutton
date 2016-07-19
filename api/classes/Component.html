@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Component - itsa-react-xxxxx</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="https://avatars0.githubusercontent.com/u/8314644?v=3&amp;s=84" title="itsa-react-xxxxx"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: 0.0.1</em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/Component.html">Component</a></li>
+                            </ul>
+                
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/component.jsx.html">component.jsx</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>Component Class</h1>
+<div class="box meta">
+
+
+        <div class="foundat">
+            Defined in: <a href="../files/lib_component.jsx.html#l5"><code>lib&#x2F;component.jsx:5</code></a>
+        </div>
+
+            Module: <a href="../modules/component.jsx.html">component.jsx</a>
+
+</div>
+
+
+<div class="box intro">
+    <p>Description here</p>
+<p><i>Copyright (c) 2016 ItsAsbreuk - <a href="http://itsasbreuk.nl">http://itsasbreuk.nl</a></i><br>
+New BSD License - <a href="http://choosealicense.com/licenses/bsd-3-clause/">http://choosealicense.com/licenses/bsd-3-clause/</a></p>
+
+</div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                            <li class="index-item method">
+                                <a href="#method_blur">blur</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_componentDidMount">componentDidMount</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_componentWillUnmount">componentWillUnmount</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_componentWillUnmount">componentWillUnmount</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_focus">focus</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getDefaultProps">getDefaultProps</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_handleClick">handleClick</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_handleNoClick">handleNoClick</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_render">render</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties">
+                            <li class="index-item property">
+                                <a href="#property_autoFocus">autoFocus</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_buttonLook">buttonLook</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_className">className</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_disabled">disabled</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_href">href</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_labelHTML">labelHTML</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_name">name</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_onClick">onClick</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_readOnly">readOnly</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_style">style</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_tabIndex">tabIndex</a>
+
+                            </li>
+                            <li class="index-item property">
+                                <a href="#property_target">target</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_blur" class="method item">
+    <h3 class="name"><code>blur</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l161"><code>lib&#x2F;component.jsx:161</code></a>
+        </p>
+
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Blurs the Component.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_componentDidMount" class="method item">
+    <h3 class="name"><code>componentDidMount</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l179"><code>lib&#x2F;component.jsx:179</code></a>
+        </p>
+
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>componentDidMount does some initialization.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_componentWillUnmount" class="method item">
+    <h3 class="name"><code>componentWillUnmount</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l193"><code>lib&#x2F;component.jsx:193</code></a>
+        </p>
+
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>componentWillMount does some initial setup.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_componentWillUnmount" class="method item">
+    <h3 class="name"><code>componentWillUnmount</code></h3>
+
+        <span class="paren">()</span>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l206"><code>lib&#x2F;component.jsx:206</code></a>
+        </p>
+
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>componentWilUnmount does some cleanup.</p>
+
+    </div>
+
+
+
+
+</div>
+<div id="method_focus" class="method item">
+    <h3 class="name"><code>focus</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[transitionTime]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+        <span class="flag chainable">chainable</span>
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l218"><code>lib&#x2F;component.jsx:218</code></a>
+        </p>
+
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Sets the focus on the Component.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[transitionTime]</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>transition-time to focus the element into the view</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_getDefaultProps" class="method item">
+    <h3 class="name"><code>getDefaultProps</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l237"><code>lib&#x2F;component.jsx:237</code></a>
+        </p>
+
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Returns the default props.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                    <p>object</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_handleClick" class="method item">
+    <h3 class="name"><code>handleClick</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>e</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l251"><code>lib&#x2F;component.jsx:251</code></a>
+        </p>
+
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Callback-fn for the onClick-event.
+Will invoke <code>this.props.onChange</code></p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">e</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_handleNoClick" class="method item">
+    <h3 class="name"><code>handleNoClick</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>e</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l331"><code>lib&#x2F;component.jsx:331</code></a>
+        </p>
+
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Callback-fn for the onClick-event in case the Component is disabled or readOnly.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">e</code>
+                        <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+<div id="method_render" class="method item">
+    <h3 class="name"><code>render</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l342"><code>lib&#x2F;component.jsx:342</code></a>
+        </p>
+
+
+
+            <p>Available since 15.0.0</p>
+    </div>
+
+    <div class="description">
+        <p>React render-method --&gt; renderes the Component.</p>
+
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                    <p>ReactComponent</p>
+
+            </div>
+        </div>
+
+
+</div>
+            </div>
+
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+<div id="property_autoFocus" class="property item">
+    <h3 class="name"><code>autoFocus</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l47"><code>lib&#x2F;component.jsx:47</code></a>
+        </p>
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Whether to autofocus the Component.</p>
+
+    </div>
+
+
+
+</div>
+<div id="property_buttonLook" class="property item">
+    <h3 class="name"><code>buttonLook</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l56"><code>lib&#x2F;component.jsx:56</code></a>
+        </p>
+
+
+            <p>Available since 15.0.0</p>
+    </div>
+
+    <div class="description">
+        <p>Whether the Component has a Button-look. If <code>false</code> then it will look as a native anchor-element.</p>
+
+    </div>
+
+        <p><strong>Default:</strong> true</p>
+
+
+</div>
+<div id="property_className" class="property item">
+    <h3 class="name"><code>className</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l66"><code>lib&#x2F;component.jsx:66</code></a>
+        </p>
+
+
+            <p>Available since 15.0.0</p>
+    </div>
+
+    <div class="description">
+        <p>Additional classname for the Component.</p>
+
+    </div>
+
+
+
+</div>
+<div id="property_disabled" class="property item">
+    <h3 class="name"><code>disabled</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l75"><code>lib&#x2F;component.jsx:75</code></a>
+        </p>
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Whether the button is disabled</p>
+
+    </div>
+
+
+
+</div>
+<div id="property_href" class="property item">
+    <h3 class="name"><code>href</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l84"><code>lib&#x2F;component.jsx:84</code></a>
+        </p>
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>The url for the anchor-element.</p>
+
+    </div>
+
+        <p><strong>Default:</strong> &quot;#&quot;</p>
+
+
+</div>
+<div id="property_labelHTML" class="property item">
+    <h3 class="name"><code>labelHTML</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l94"><code>lib&#x2F;component.jsx:94</code></a>
+        </p>
+
+
+            <p>Available since 15.0.0</p>
+    </div>
+
+    <div class="description">
+        <p>Additional classname for the Component.</p>
+
+    </div>
+
+        <p><strong>Default:</strong> &quot;download file&quot;</p>
+
+
+</div>
+<div id="property_name" class="property item">
+    <h3 class="name"><code>name</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l104"><code>lib&#x2F;component.jsx:104</code></a>
+        </p>
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>The name-attribute of the button</p>
+
+    </div>
+
+
+
+</div>
+<div id="property_onClick" class="property item">
+    <h3 class="name"><code>onClick</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function" class="crosslink external" target="_blank">Function</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l113"><code>lib&#x2F;component.jsx:113</code></a>
+        </p>
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Callback whenever the button gets clicked by the left mousebutton.</p>
+
+    </div>
+
+
+
+</div>
+<div id="property_readOnly" class="property item">
+    <h3 class="name"><code>readOnly</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean" class="crosslink external" target="_blank">Boolean</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l122"><code>lib&#x2F;component.jsx:122</code></a>
+        </p>
+
+
+            <p>Available since 15.2.0</p>
+    </div>
+
+    <div class="description">
+        <p>Whether the checkbox is readonly</p>
+
+    </div>
+
+        <p><strong>Default:</strong> false</p>
+
+
+</div>
+<div id="property_style" class="property item">
+    <h3 class="name"><code>style</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object" class="crosslink external" target="_blank">Object</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l132"><code>lib&#x2F;component.jsx:132</code></a>
+        </p>
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>Inline style</p>
+
+    </div>
+
+
+
+</div>
+<div id="property_tabIndex" class="property item">
+    <h3 class="name"><code>tabIndex</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number" class="crosslink external" target="_blank">Number</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l141"><code>lib&#x2F;component.jsx:141</code></a>
+        </p>
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>The tabIndex
+Default: 1</p>
+
+    </div>
+
+
+
+</div>
+<div id="property_target" class="property item">
+    <h3 class="name"><code>target</code></h3>
+    <span class="type"><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" class="crosslink external" target="_blank">String</a></span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_component.jsx.html#l151"><code>lib&#x2F;component.jsx:151</code></a>
+        </p>
+
+
+            <p>Available since 0.0.1</p>
+    </div>
+
+    <div class="description">
+        <p>The anchor-target where the response should go into.</p>
+
+    </div>
+
+
+
+</div>
+            </div>
+
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>
