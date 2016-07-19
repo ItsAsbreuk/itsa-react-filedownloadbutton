@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/ItsAsbreuk/itsa-react-filedownloadbutton.svg?branch=master)](https://travis-ci.org/ItsAsbreuk/itsa-react-filedownloadbutton)
 
-File downloadbutton, which uses HTML5 saveAs when possible, otherwise a native anchor-link.
+File downloadbutton, which uses a HTML5 FileSaver when possible, otherwise a native anchor-link.
 
 `Browser-support:` *all*
 
@@ -12,7 +12,7 @@ File downloadbutton, which uses HTML5 saveAs when possible, otherwise a native a
 #### How it works:
 In case the browser does not support `blob` (IE9-), then the download will be done by a simple a-href, targetting a new window for the downloadfile.
 
-However, in all modern browsers, the file-download will go through the `saveAs` feature. In practice, the a-href will be default-prevented and an ajax GET-request will be initiated.
+However, in all modern browsers, the file-download will go through the `FileSaver` feature, which is delevired by `node-safe-filesaver` In practice, the a-href will be default-prevented and an ajax GET-request will be initiated.
 
 
 ## How to use:

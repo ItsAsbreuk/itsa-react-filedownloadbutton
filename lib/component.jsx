@@ -25,13 +25,15 @@ let SAVEAS_SUPPORT = false,
 const React = require("react"),
     ReactDom = require("react-dom"),
     PropTypes = React.PropTypes,
+    cloneProps = require("itsa-react-clone-props"),
     AnchorButton = require("itsa-react-anchorbutton"),
     utils = require("itsa-utils"),
     mimeDb = require("mime-db"),
     isNode = utils.isNode,
     async = utils.async,
     later = utils.later,
-    MAIN_CLASS = "itsa-filedownloadbutton";
+    MAIN_CLASS = "itsa-filedownloadbutton",
+    FORM_ELEMENT_CLASS_SPACES = " itsa-formelement";
 
 if (!isNode) {
     try {
@@ -348,7 +350,7 @@ const Component = React.createClass({
      */
     render() {
         let className = MAIN_CLASS,
-            handleClick;
+            handleClick, passProps;
         const instance = this,
             props = instance.props,
             propsClass = props.className,
@@ -362,10 +364,13 @@ const Component = React.createClass({
         else {
             SAVEAS_SUPPORT && (handleClick=instance.handleClick);
         }
+        passProps = cloneProps.clone(props);
+        delete passProps.labelHTML;
+        delete passProps.buttonLook;
         return buttonLook ?
             (
                 <AnchorButton
-                    {...props}
+                    {...passProps}
                     className={className}
                     dangerouslySetInnerHTML={innerHTML}
                     href={props.href}
@@ -375,8 +380,8 @@ const Component = React.createClass({
             ) :
             (
                 <a
-                    {...props}
-                    className={className}
+                    {...passProps}
+                    className={className+FORM_ELEMENT_CLASS_SPACES}
                     dangerouslySetInnerHTML={innerHTML}
                     href={props.href}
                     onClick={handleClick}
