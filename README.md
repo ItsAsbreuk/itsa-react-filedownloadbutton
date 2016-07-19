@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.org/ItsAsbreuk/itsa-react-filedownloadbutton.svg?branch=master)](https://travis-ci.org/ItsAsbreuk/itsa-react-filedownloadbutton)
-
 File downloadbutton, which uses a HTML5 FileSaver when possible, otherwise a native anchor-link.
 
 `Browser-support:` *all*
