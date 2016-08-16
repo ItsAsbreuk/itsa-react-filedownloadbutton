@@ -20,7 +20,7 @@ require("itsa-jsext");
 require("itsa-dom");
 
 let SAVEAS_SUPPORT = false,
-    saveAs;
+    saveAs, isSafari;
 
 const React = require("react"),
     ReactDom = require("react-dom"),
@@ -36,9 +36,13 @@ const React = require("react"),
     FORM_ELEMENT_CLASS_SPACES = " itsa-formelement";
 
 if (!isNode) {
-    try {
-        SAVEAS_SUPPORT = !!new Blob;
-    } catch (e) {}
+    isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf('Constructor') > 0;
+    if (!isSafari) {
+        // safari does not support this nice download-feature
+        try {
+            SAVEAS_SUPPORT = !!new Blob;
+        } catch (e) {}
+    }
 }
 
 SAVEAS_SUPPORT && (saveAs=require("node-safe-filesaver").saveAs);
@@ -47,9 +51,20 @@ const Component = React.createClass({
 
     propTypes: {
         /**
+         * Whether to abort running requests at the time the component gets unmounted
+         *
+         * @property abortOnUnmount
+         * @default false
+         * @type Boolean
+         * @since 0.0.1
+        */
+        abortOnUnmount: PropTypes.bool,
+
+        /**
          * Whether to autofocus the Component.
          *
          * @property autoFocus
+         * @default false
          * @type Boolean
          * @since 0.0.1
         */
@@ -213,7 +228,9 @@ const Component = React.createClass({
      */
     componentWillUnmount() {
         const instance = this;
-        SAVEAS_SUPPORT && instance._fileRequests.forEach(fileRequest => async(() => fileRequest.abort()));
+        if (SAVEAS_SUPPORT && instance.props.abortOnUnmount) {
+            instance._fileRequests.forEach(fileRequest => async(() => fileRequest.abort()));
+        }
         instance._focusLater && instance._focusLater.cancel();
     },
 
@@ -245,6 +262,8 @@ const Component = React.createClass({
      */
     getDefaultProps() {
         return {
+            abortOnUnmount: false,
+            autoFocus: false,
             buttonLook: true,
             labelHTML: "download file"
         };
@@ -259,9 +278,12 @@ const Component = React.createClass({
      * @since 0.0.1
      */
     handleClick(e) {
-        let fileRequest;
+        let preventedExternally = false,
+            fileRequest;
         const instance = this,
-            url = instance.props.href,
+            props = instance.props,
+            url = props.href,
+            onClick = props.onClick,
             getFilenameFromContentDisposition = xhrResponse => {
                 let responseHeaders = xhrResponse.getAllResponseHeaders().split("\r\n"),
                    filename, items, contentDisposition;
@@ -317,17 +339,26 @@ const Component = React.createClass({
                 responseType: "blob"
             };
         e.preventDefault();
-        fileRequest = instance._io.request(options);
-        instance._fileRequests.push(fileRequest);
-        fileRequest
-        .then(xhrResponse => {
-            const storeFileName = getFilenameFromContentDisposition(xhrResponse) || filename,
-                contentType = getContentTypeFromFilename(storeFileName),
-                blob = new Blob([xhrResponse.response], {type: contentType});
-            saveAs(blob, storeFileName);
-        })
-        .catch(err => console.error(err))
-        .itsa_finally(() => instance._fileRequests.itsa_remove(fileRequest));
+        if (onClick) {
+            onClick({
+                preventDefault: function() {
+                    preventedExternally = true;
+                }
+            });
+        }
+        if (!preventedExternally) {
+            fileRequest = instance._io.request(options);
+            instance._fileRequests.push(fileRequest);
+            fileRequest
+            .then(xhrResponse => {
+                const storeFileName = getFilenameFromContentDisposition(xhrResponse) || filename,
+                    contentType = getContentTypeFromFilename(storeFileName),
+                    blob = new Blob([xhrResponse.response], {type: contentType});
+                saveAs(blob, storeFileName);
+            })
+            .catch(err => console.error(err))
+            .itsa_finally(() => instance._fileRequests.itsa_remove(fileRequest));
+        }
     },
 
     /**
@@ -367,6 +398,7 @@ const Component = React.createClass({
         passProps = cloneProps.clone(props);
         delete passProps.labelHTML;
         delete passProps.buttonLook;
+        delete passProps.abortOnUnmount;
         return buttonLook ?
             (
                 <AnchorButton
