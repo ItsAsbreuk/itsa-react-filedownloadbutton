@@ -24,7 +24,7 @@ let SAVEAS_SUPPORT = false,
 
 const React = require("react"),
     ReactDom = require("react-dom"),
-    PropTypes = React.PropTypes,
+    PropTypes = require("prop-types"),
     cloneProps = require("itsa-react-clone-props"),
     AnchorButton = require("itsa-react-anchorbutton"),
     utils = require("itsa-utils"),
@@ -47,133 +47,15 @@ if (!isNode) {
 
 SAVEAS_SUPPORT && (saveAs=require("node-safe-filesaver").saveAs);
 
-const Component = React.createClass({
-
-    propTypes: {
-        /**
-         * Whether to abort running requests at the time the component gets unmounted
-         *
-         * @property abortOnUnmount
-         * @default false
-         * @type Boolean
-         * @since 0.0.1
-        */
-        abortOnUnmount: PropTypes.bool,
-
-        /**
-         * Whether to autofocus the Component.
-         *
-         * @property autoFocus
-         * @default false
-         * @type Boolean
-         * @since 0.0.1
-        */
-        autoFocus: PropTypes.bool,
-
-        /**
-         * Whether the Component has a Button-look. If `false` then it will look as a native anchor-element.
-         *
-         * @property buttonLook
-         * @default true
-         * @type Boolean
-         * @since 15.0.0
-        */
-        buttonLook: PropTypes.bool,
-
-        /**
-         * Additional classname for the Component.
-         *
-         * @property className
-         * @type String
-         * @since 15.0.0
-        */
-        className: PropTypes.string,
-
-        /**
-         * Whether the button is disabled
-         *
-         * @property disabled
-         * @type Boolean
-         * @since 0.0.1
-        */
-        disabled: PropTypes.bool,
-
-        /**
-         * The url for the anchor-element.
-         *
-         * @default "#"
-         * @property href
-         * @type String
-         * @since 0.0.1
-        */
-        href: PropTypes.string,
-
-        /**
-         * Additional classname for the Component.
-         *
-         * @property labelHTML
-         * @type String
-         * @default "download file"
-         * @since 15.0.0
-        */
-        labelHTML: PropTypes.string,
-
-        /**
-         * The name-attribute of the button
-         *
-         * @property name
-         * @type String
-         * @since 0.0.1
-        */
-        name: PropTypes.string,
-
-        /**
-         * Callback whenever the button gets clicked by the left mousebutton.
-         *
-         * @property onClick
-         * @type Function
-         * @since 0.0.1
-        */
-        onClick: PropTypes.func,
-
-        /**
-         * Whether the checkbox is readonly
-         *
-         * @property readOnly
-         * @type Boolean
-         * @default false
-         * @since 15.2.0
-        */
-        readOnly: PropTypes.bool,
-
-        /**
-         * Inline style
-         *
-         * @property style
-         * @type object
-         * @since 0.0.1
-        */
-        style: PropTypes.object,
-
-        /**
-         * The tabIndex
-         * Default: 1
-         *
-         * @property tabIndex
-         * @type Number
-         * @since 0.0.1
-        */
-        tabIndex: PropTypes.number,
-
-        /**
-         * The anchor-target where the response should go into.
-         *
-         * @property target
-         * @type String
-         * @since 0.0.1
-        */
-        target: PropTypes.string
-    },
+class Component extends React.Component {
+    constructor(props) {
+        super(props);
+        const instance = this;
+        instance.blur = instance.blur.bind(instance);
+        instance.focus = instance.focus.bind(instance);
+        instance.handleClick = instance.handleClick.bind(instance);
+        instance.handleNoClick = instance.handleNoClick.bind(instance);
+    }
 
     /**
      * Blurs the Component.
@@ -191,7 +73,7 @@ const Component = React.createClass({
             instance._anchorNode.blur();
         }
         return instance;
-    },
+    }
 
     /**
      * componentDidMount does some initialization.
@@ -205,7 +87,7 @@ const Component = React.createClass({
         if (instance.props.autoFocus && !instance.props.buttonLook) {
             instance._focusLater = later(() => instance.focus(), 50);
         }
-    },
+    }
 
     /**
      * componentWillMount does some initial setup.
@@ -218,7 +100,7 @@ const Component = React.createClass({
             this._fileRequests = [];
             this._io = require("itsa-fetch").io;
         }
-    },
+    }
 
     /**
      * componentWilUnmount does some cleanup.
@@ -232,7 +114,7 @@ const Component = React.createClass({
             instance._fileRequests.forEach(fileRequest => async(() => fileRequest.abort()));
         }
         instance._focusLater && instance._focusLater.cancel();
-    },
+    }
 
     /**
      * Sets the focus on the Component.
@@ -251,23 +133,7 @@ const Component = React.createClass({
             instance._anchorNode.itsa_focus && instance._anchorNode.itsa_focus(null, null, transitionTime);
         }
         return instance;
-    },
-
-    /**
-     * Returns the default props.
-     *
-     * @method getDefaultProps
-     * @return object
-     * @since 0.0.1
-     */
-    getDefaultProps() {
-        return {
-            abortOnUnmount: false,
-            autoFocus: false,
-            buttonLook: true,
-            labelHTML: "download file"
-        };
-    },
+    }
 
     /**
      * Callback-fn for the onClick-event.
@@ -311,7 +177,7 @@ const Component = React.createClass({
                 let filename = url.split("?")[0];
                 const slashIndex = filename.lastIndexOf("/");
                 (slashIndex>-1) && (filename=filename.substr(slashIndex+1));
-                return filename;
+                return decodeURIComponent(filename);
             },
             getContentTypeFromFilename = filename => {
                 let extention, dotIndex;
@@ -359,7 +225,7 @@ const Component = React.createClass({
             .catch(err => console.error(err))
             .itsa_finally(() => instance._fileRequests.itsa_remove(fileRequest));
         }
-    },
+    }
 
     /**
      * Callback-fn for the onClick-event in case the Component is disabled or readOnly.
@@ -370,7 +236,7 @@ const Component = React.createClass({
      */
     handleNoClick(e) {
         e.preventDefault();
-    },
+    }
 
     /**
      * React render-method --> renderes the Component.
@@ -420,7 +286,139 @@ const Component = React.createClass({
                     target="_blank" />
             );
     }
+}
 
-});
+Component.propTypes = {
+    /**
+     * Whether to abort running requests at the time the component gets unmounted
+     *
+     * @property abortOnUnmount
+     * @default false
+     * @type Boolean
+     * @since 0.0.1
+    */
+    abortOnUnmount: PropTypes.bool,
+
+    /**
+     * Whether to autofocus the Component.
+     *
+     * @property autoFocus
+     * @default false
+     * @type Boolean
+     * @since 0.0.1
+    */
+    autoFocus: PropTypes.bool,
+
+    /**
+     * Whether the Component has a Button-look. If `false` then it will look as a native anchor-element.
+     *
+     * @property buttonLook
+     * @default true
+     * @type Boolean
+     * @since 15.0.0
+    */
+    buttonLook: PropTypes.bool,
+
+    /**
+     * Additional classname for the Component.
+     *
+     * @property className
+     * @type String
+     * @since 15.0.0
+    */
+    className: PropTypes.string,
+
+    /**
+     * Whether the button is disabled
+     *
+     * @property disabled
+     * @type Boolean
+     * @since 0.0.1
+    */
+    disabled: PropTypes.bool,
+
+    /**
+     * The url for the anchor-element.
+     *
+     * @default "#"
+     * @property href
+     * @type String
+     * @since 0.0.1
+    */
+    href: PropTypes.string,
+
+    /**
+     * Additional classname for the Component.
+     *
+     * @property labelHTML
+     * @type String
+     * @default "download file"
+     * @since 15.0.0
+    */
+    labelHTML: PropTypes.string,
+
+    /**
+     * The name-attribute of the button
+     *
+     * @property name
+     * @type String
+     * @since 0.0.1
+    */
+    name: PropTypes.string,
+
+    /**
+     * Callback whenever the button gets clicked by the left mousebutton.
+     *
+     * @property onClick
+     * @type Function
+     * @since 0.0.1
+    */
+    onClick: PropTypes.func,
+
+    /**
+     * Whether the checkbox is readonly
+     *
+     * @property readOnly
+     * @type Boolean
+     * @default false
+     * @since 15.2.0
+    */
+    readOnly: PropTypes.bool,
+
+    /**
+     * Inline style
+     *
+     * @property style
+     * @type object
+     * @since 0.0.1
+    */
+    style: PropTypes.object,
+
+    /**
+     * The tabIndex
+     * Default: 1
+     *
+     * @property tabIndex
+     * @type Number
+     * @since 0.0.1
+    */
+    tabIndex: PropTypes.number,
+
+    /**
+     * The anchor-target where the response should go into.
+     *
+     * @property target
+     * @type String
+     * @since 0.0.1
+    */
+    target: PropTypes.string
+};
+
+Component.defaultProps = {
+    abortOnUnmount: false,
+    autoFocus: false,
+    buttonLook: true,
+    labelHTML: "download file"
+};
 
 module.exports = Component;

@@ -55,143 +55,7 @@
     "classitems": [
         {
             "file": "lib/component.jsx",
-            "line": 47,
-            "description": "Whether to autofocus the Component.",
-            "itemtype": "property",
-            "name": "autoFocus",
-            "type": "Boolean",
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 56,
-            "description": "Whether the Component has a Button-look. If `false` then it will look as a native anchor-element.",
-            "itemtype": "property",
-            "name": "buttonLook",
-            "default": "true",
-            "type": "Boolean",
-            "since": "15.0.0",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 66,
-            "description": "Additional classname for the Component.",
-            "itemtype": "property",
-            "name": "className",
-            "type": "String",
-            "since": "15.0.0",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 75,
-            "description": "Whether the button is disabled",
-            "itemtype": "property",
-            "name": "disabled",
-            "type": "Boolean",
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 84,
-            "description": "The url for the anchor-element.",
-            "default": "\"#\"",
-            "itemtype": "property",
-            "name": "href",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 94,
-            "description": "Additional classname for the Component.",
-            "itemtype": "property",
-            "name": "labelHTML",
-            "type": "String",
-            "default": "\"download file\"",
-            "since": "15.0.0",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 104,
-            "description": "The name-attribute of the button",
-            "itemtype": "property",
-            "name": "name",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 113,
-            "description": "Callback whenever the button gets clicked by the left mousebutton.",
-            "itemtype": "property",
-            "name": "onClick",
-            "type": "Function",
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 122,
-            "description": "Whether the checkbox is readonly",
-            "itemtype": "property",
-            "name": "readOnly",
-            "type": "Boolean",
-            "default": "false",
-            "since": "15.2.0",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 132,
-            "description": "Inline style",
-            "itemtype": "property",
-            "name": "style",
-            "type": "object",
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 141,
-            "description": "The tabIndex\nDefault: 1",
-            "itemtype": "property",
-            "name": "tabIndex",
-            "type": "Number",
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 151,
-            "description": "The anchor-target where the response should go into.",
-            "itemtype": "property",
-            "name": "target",
-            "type": "String",
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 161,
+            "line": 60,
             "description": "Blurs the Component.",
             "itemtype": "method",
             "name": "blur",
@@ -202,7 +66,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 179,
+            "line": 78,
             "description": "componentDidMount does some initialization.",
             "itemtype": "method",
             "name": "componentDidMount",
@@ -212,7 +76,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 193,
+            "line": 92,
             "description": "componentWillMount does some initial setup.",
             "itemtype": "method",
             "name": "componentWillUnmount",
@@ -222,7 +86,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 206,
+            "line": 105,
             "description": "componentWilUnmount does some cleanup.",
             "itemtype": "method",
             "name": "componentWillUnmount",
@@ -232,7 +96,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 218,
+            "line": 119,
             "description": "Sets the focus on the Component.",
             "itemtype": "method",
             "name": "focus",
@@ -251,20 +115,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 237,
-            "description": "Returns the default props.",
-            "itemtype": "method",
-            "name": "getDefaultProps",
-            "return": {
-                "description": "object"
-            },
-            "since": "0.0.1",
-            "class": "Component",
-            "module": "component.jsx"
-        },
-        {
-            "file": "lib/component.jsx",
-            "line": 251,
+            "line": 138,
             "description": "Callback-fn for the onClick-event.\nWill invoke `this.props.onChange`",
             "itemtype": "method",
             "name": "handleClick",
@@ -281,7 +132,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 331,
+            "line": 230,
             "description": "Callback-fn for the onClick-event in case the Component is disabled or readOnly.",
             "itemtype": "method",
             "name": "handleNoClick",
@@ -298,7 +149,7 @@
         },
         {
             "file": "lib/component.jsx",
-            "line": 342,
+            "line": 241,
             "description": "React render-method --> renderes the Component.",
             "itemtype": "method",
             "name": "render",
@@ -306,6 +157,155 @@
                 "description": "ReactComponent"
             },
             "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 292,
+            "description": "Whether to abort running requests at the time the component gets unmounted",
+            "itemtype": "property",
+            "name": "abortOnUnmount",
+            "default": "false",
+            "type": "Boolean",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 302,
+            "description": "Whether to autofocus the Component.",
+            "itemtype": "property",
+            "name": "autoFocus",
+            "default": "false",
+            "type": "Boolean",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 312,
+            "description": "Whether the Component has a Button-look. If `false` then it will look as a native anchor-element.",
+            "itemtype": "property",
+            "name": "buttonLook",
+            "default": "true",
+            "type": "Boolean",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 322,
+            "description": "Additional classname for the Component.",
+            "itemtype": "property",
+            "name": "className",
+            "type": "String",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 331,
+            "description": "Whether the button is disabled",
+            "itemtype": "property",
+            "name": "disabled",
+            "type": "Boolean",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 340,
+            "description": "The url for the anchor-element.",
+            "default": "\"#\"",
+            "itemtype": "property",
+            "name": "href",
+            "type": "String",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 350,
+            "description": "Additional classname for the Component.",
+            "itemtype": "property",
+            "name": "labelHTML",
+            "type": "String",
+            "default": "\"download file\"",
+            "since": "15.0.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 360,
+            "description": "The name-attribute of the button",
+            "itemtype": "property",
+            "name": "name",
+            "type": "String",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 369,
+            "description": "Callback whenever the button gets clicked by the left mousebutton.",
+            "itemtype": "property",
+            "name": "onClick",
+            "type": "Function",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 378,
+            "description": "Whether the checkbox is readonly",
+            "itemtype": "property",
+            "name": "readOnly",
+            "type": "Boolean",
+            "default": "false",
+            "since": "15.2.0",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 388,
+            "description": "Inline style",
+            "itemtype": "property",
+            "name": "style",
+            "type": "object",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 397,
+            "description": "The tabIndex\nDefault: 1",
+            "itemtype": "property",
+            "name": "tabIndex",
+            "type": "Number",
+            "since": "0.0.1",
+            "class": "Component",
+            "module": "component.jsx"
+        },
+        {
+            "file": "lib/component.jsx",
+            "line": 407,
+            "description": "The anchor-target where the response should go into.",
+            "itemtype": "property",
+            "name": "target",
+            "type": "String",
+            "since": "0.0.1",
             "class": "Component",
             "module": "component.jsx"
         }

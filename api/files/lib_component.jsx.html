@@ -103,143 +103,42 @@ require(&quot;itsa-jsext&quot;);
 require(&quot;itsa-dom&quot;);
 
 let SAVEAS_SUPPORT = false,
-    saveAs;
+    saveAs, isSafari;
 
 const React = require(&quot;react&quot;),
     ReactDom = require(&quot;react-dom&quot;),
-    PropTypes = React.PropTypes,
+    PropTypes = require(&quot;prop-types&quot;),
+    cloneProps = require(&quot;itsa-react-clone-props&quot;),
     AnchorButton = require(&quot;itsa-react-anchorbutton&quot;),
     utils = require(&quot;itsa-utils&quot;),
     mimeDb = require(&quot;mime-db&quot;),
     isNode = utils.isNode,
     async = utils.async,
     later = utils.later,
-    MAIN_CLASS = &quot;itsa-filedownloadbutton&quot;;
+    MAIN_CLASS = &quot;itsa-filedownloadbutton&quot;,
+    FORM_ELEMENT_CLASS_SPACES = &quot; itsa-formelement&quot;;
 
 if (!isNode) {
-    try {
-        SAVEAS_SUPPORT = !!new Blob;
-    } catch (e) {}
+    isSafari = Object.prototype.toString.call(window.HTMLElement).indexOf(&#x27;Constructor&#x27;) &gt; 0;
+    if (!isSafari) {
+        // safari does not support this nice download-feature
+        try {
+            SAVEAS_SUPPORT = !!new Blob;
+        } catch (e) {}
+    }
 }
 
 SAVEAS_SUPPORT &amp;&amp; (saveAs=require(&quot;node-safe-filesaver&quot;).saveAs);
 
-const Component = React.createClass({
-
-    propTypes: {
-        /**
-         * Whether to autofocus the Component.
-         *
-         * @property autoFocus
-         * @type Boolean
-         * @since 0.0.1
-        */
-        autoFocus: PropTypes.bool,
-
-        /**
-         * Whether the Component has a Button-look. If &#x60;false&#x60; then it will look as a native anchor-element.
-         *
-         * @property buttonLook
-         * @default true
-         * @type Boolean
-         * @since 15.0.0
-        */
-        buttonLook: PropTypes.bool,
-
-        /**
-         * Additional classname for the Component.
-         *
-         * @property className
-         * @type String
-         * @since 15.0.0
-        */
-        className: PropTypes.string,
-
-        /**
-         * Whether the button is disabled
-         *
-         * @property disabled
-         * @type Boolean
-         * @since 0.0.1
-        */
-        disabled: PropTypes.bool,
-
-        /**
-         * The url for the anchor-element.
-         *
-         * @default &quot;#&quot;
-         * @property href
-         * @type String
-         * @since 0.0.1
-        */
-        href: PropTypes.string,
-
-        /**
-         * Additional classname for the Component.
-         *
-         * @property labelHTML
-         * @type String
-         * @default &quot;download file&quot;
-         * @since 15.0.0
-        */
-        labelHTML: PropTypes.string,
-
-        /**
-         * The name-attribute of the button
-         *
-         * @property name
-         * @type String
-         * @since 0.0.1
-        */
-        name: PropTypes.string,
-
-        /**
-         * Callback whenever the button gets clicked by the left mousebutton.
-         *
-         * @property onClick
-         * @type Function
-         * @since 0.0.1
-        */
-        onClick: PropTypes.func,
-
-        /**
-         * Whether the checkbox is readonly
-         *
-         * @property readOnly
-         * @type Boolean
-         * @default false
-         * @since 15.2.0
-        */
-        readOnly: PropTypes.bool,
-
-        /**
-         * Inline style
-         *
-         * @property style
-         * @type object
-         * @since 0.0.1
-        */
-        style: PropTypes.object,
-
-        /**
-         * The tabIndex
-         * Default: 1
-         *
-         * @property tabIndex
-         * @type Number
-         * @since 0.0.1
-        */
-        tabIndex: PropTypes.number,
-
-        /**
-         * The anchor-target where the response should go into.
-         *
-         * @property target
-         * @type String
-         * @since 0.0.1
-        */
-        target: PropTypes.string
-    },
+class Component extends React.Component {
+    constructor(props) {
+        super(props);
+        const instance = this;
+        instance.blur = instance.blur.bind(instance);
+        instance.focus = instance.focus.bind(instance);
+        instance.handleClick = instance.handleClick.bind(instance);
+        instance.handleNoClick = instance.handleNoClick.bind(instance);
+    }
 
     /**
      * Blurs the Component.
@@ -257,7 +156,7 @@ const Component = React.createClass({
             instance._anchorNode.blur();
         }
         return instance;
-    },
+    }
 
     /**
      * componentDidMount does some initialization.
@@ -271,7 +170,7 @@ const Component = React.createClass({
         if (instance.props.autoFocus &amp;&amp; !instance.props.buttonLook) {
             instance._focusLater = later(() =&gt; instance.focus(), 50);
         }
-    },
+    }
 
     /**
      * componentWillMount does some initial setup.
@@ -284,7 +183,7 @@ const Component = React.createClass({
             this._fileRequests = [];
             this._io = require(&quot;itsa-fetch&quot;).io;
         }
-    },
+    }
 
     /**
      * componentWilUnmount does some cleanup.
@@ -294,9 +193,11 @@ const Component = React.createClass({
      */
     componentWillUnmount() {
         const instance = this;
-        SAVEAS_SUPPORT &amp;&amp; instance._fileRequests.forEach(fileRequest =&gt; async(() =&gt; fileRequest.abort()));
+        if (SAVEAS_SUPPORT &amp;&amp; instance.props.abortOnUnmount) {
+            instance._fileRequests.forEach(fileRequest =&gt; async(() =&gt; fileRequest.abort()));
+        }
         instance._focusLater &amp;&amp; instance._focusLater.cancel();
-    },
+    }
 
     /**
      * Sets the focus on the Component.
@@ -315,21 +216,7 @@ const Component = React.createClass({
             instance._anchorNode.itsa_focus &amp;&amp; instance._anchorNode.itsa_focus(null, null, transitionTime);
         }
         return instance;
-    },
-
-    /**
-     * Returns the default props.
-     *
-     * @method getDefaultProps
-     * @return object
-     * @since 0.0.1
-     */
-    getDefaultProps() {
-        return {
-            buttonLook: true,
-            labelHTML: &quot;download file&quot;
-        };
-    },
+    }
 
     /**
      * Callback-fn for the onClick-event.
@@ -340,9 +227,12 @@ const Component = React.createClass({
      * @since 0.0.1
      */
     handleClick(e) {
-        let fileRequest;
+        let preventedExternally = false,
+            fileRequest;
         const instance = this,
-            url = instance.props.href,
+            props = instance.props,
+            url = props.href,
+            onClick = props.onClick,
             getFilenameFromContentDisposition = xhrResponse =&gt; {
                 let responseHeaders = xhrResponse.getAllResponseHeaders().split(&quot;\r\n&quot;),
                    filename, items, contentDisposition;
@@ -370,7 +260,7 @@ const Component = React.createClass({
                 let filename = url.split(&quot;?&quot;)[0];
                 const slashIndex = filename.lastIndexOf(&quot;/&quot;);
                 (slashIndex&gt;-1) &amp;&amp; (filename=filename.substr(slashIndex+1));
-                return filename;
+                return decodeURIComponent(filename);
             },
             getContentTypeFromFilename = filename =&gt; {
                 let extention, dotIndex;
@@ -398,18 +288,27 @@ const Component = React.createClass({
                 responseType: &quot;blob&quot;
             };
         e.preventDefault();
-        fileRequest = instance._io.request(options);
-        instance._fileRequests.push(fileRequest);
-        fileRequest
-        .then(xhrResponse =&gt; {
-            const storeFileName = getFilenameFromContentDisposition(xhrResponse) || filename,
-                contentType = getContentTypeFromFilename(storeFileName),
-                blob = new Blob([xhrResponse.response], {type: contentType});
-            saveAs(blob, storeFileName);
-        })
-        .catch(err =&gt; console.error(err))
-        .itsa_finally(() =&gt; instance._fileRequests.itsa_remove(fileRequest));
-    },
+        if (onClick) {
+            onClick({
+                preventDefault: function() {
+                    preventedExternally = true;
+                }
+            });
+        }
+        if (!preventedExternally) {
+            fileRequest = instance._io.request(options);
+            instance._fileRequests.push(fileRequest);
+            fileRequest
+            .then(xhrResponse =&gt; {
+                const storeFileName = getFilenameFromContentDisposition(xhrResponse) || filename,
+                    contentType = getContentTypeFromFilename(storeFileName),
+                    blob = new Blob([xhrResponse.response], {type: contentType});
+                saveAs(blob, storeFileName);
+            })
+            .catch(err =&gt; console.error(err))
+            .itsa_finally(() =&gt; instance._fileRequests.itsa_remove(fileRequest));
+        }
+    }
 
     /**
      * Callback-fn for the onClick-event in case the Component is disabled or readOnly.
@@ -420,7 +319,7 @@ const Component = React.createClass({
      */
     handleNoClick(e) {
         e.preventDefault();
-    },
+    }
 
     /**
      * React render-method --&gt; renderes the Component.
@@ -431,7 +330,7 @@ const Component = React.createClass({
      */
     render() {
         let className = MAIN_CLASS,
-            handleClick;
+            handleClick, passProps;
         const instance = this,
             props = instance.props,
             propsClass = props.className,
@@ -445,10 +344,14 @@ const Component = React.createClass({
         else {
             SAVEAS_SUPPORT &amp;&amp; (handleClick=instance.handleClick);
         }
+        passProps = cloneProps.clone(props);
+        delete passProps.labelHTML;
+        delete passProps.buttonLook;
+        delete passProps.abortOnUnmount;
         return buttonLook ?
             (
                 &lt;AnchorButton
-                    {...props}
+                    {...passProps}
                     className={className}
                     dangerouslySetInnerHTML={innerHTML}
                     href={props.href}
@@ -458,16 +361,148 @@ const Component = React.createClass({
             ) :
             (
                 &lt;a
-                    {...props}
-                    className={className}
+                    {...passProps}
+                    className={className+FORM_ELEMENT_CLASS_SPACES}
                     dangerouslySetInnerHTML={innerHTML}
                     href={props.href}
                     onClick={handleClick}
                     target=&quot;_blank&quot; /&gt;
             );
     }
+}
 
-});
+Component.propTypes = {
+    /**
+     * Whether to abort running requests at the time the component gets unmounted
+     *
+     * @property abortOnUnmount
+     * @default false
+     * @type Boolean
+     * @since 0.0.1
+    */
+    abortOnUnmount: PropTypes.bool,
+
+    /**
+     * Whether to autofocus the Component.
+     *
+     * @property autoFocus
+     * @default false
+     * @type Boolean
+     * @since 0.0.1
+    */
+    autoFocus: PropTypes.bool,
+
+    /**
+     * Whether the Component has a Button-look. If &#x60;false&#x60; then it will look as a native anchor-element.
+     *
+     * @property buttonLook
+     * @default true
+     * @type Boolean
+     * @since 15.0.0
+    */
+    buttonLook: PropTypes.bool,
+
+    /**
+     * Additional classname for the Component.
+     *
+     * @property className
+     * @type String
+     * @since 15.0.0
+    */
+    className: PropTypes.string,
+
+    /**
+     * Whether the button is disabled
+     *
+     * @property disabled
+     * @type Boolean
+     * @since 0.0.1
+    */
+    disabled: PropTypes.bool,
+
+    /**
+     * The url for the anchor-element.
+     *
+     * @default &quot;#&quot;
+     * @property href
+     * @type String
+     * @since 0.0.1
+    */
+    href: PropTypes.string,
+
+    /**
+     * Additional classname for the Component.
+     *
+     * @property labelHTML
+     * @type String
+     * @default &quot;download file&quot;
+     * @since 15.0.0
+    */
+    labelHTML: PropTypes.string,
+
+    /**
+     * The name-attribute of the button
+     *
+     * @property name
+     * @type String
+     * @since 0.0.1
+    */
+    name: PropTypes.string,
+
+    /**
+     * Callback whenever the button gets clicked by the left mousebutton.
+     *
+     * @property onClick
+     * @type Function
+     * @since 0.0.1
+    */
+    onClick: PropTypes.func,
+
+    /**
+     * Whether the checkbox is readonly
+     *
+     * @property readOnly
+     * @type Boolean
+     * @default false
+     * @since 15.2.0
+    */
+    readOnly: PropTypes.bool,
+
+    /**
+     * Inline style
+     *
+     * @property style
+     * @type object
+     * @since 0.0.1
+    */
+    style: PropTypes.object,
+
+    /**
+     * The tabIndex
+     * Default: 1
+     *
+     * @property tabIndex
+     * @type Number
+     * @since 0.0.1
+    */
+    tabIndex: PropTypes.number,
+
+    /**
+     * The anchor-target where the response should go into.
+     *
+     * @property target
+     * @type String
+     * @since 0.0.1
+    */
+    target: PropTypes.string
+};
+
+Component.defaultProps = {
+    abortOnUnmount: false,
+    autoFocus: false,
+    buttonLook: true,
+    labelHTML: &quot;download file&quot;
+};
 
 module.exports = Component;
 
