@@ -106,7 +106,6 @@ let SAVEAS_SUPPORT = false,
     saveAs, isSafari;
 
 const React = require(&quot;react&quot;),
-    ReactDom = require(&quot;react-dom&quot;),
     PropTypes = require(&quot;prop-types&quot;),
     cloneProps = require(&quot;itsa-react-clone-props&quot;),
     AnchorButton = require(&quot;itsa-react-anchorbutton&quot;),
@@ -150,7 +149,7 @@ class Component extends React.Component {
     blur() {
         var instance = this;
         if (instance.props.buttonLook) {
-            instance.refs[&quot;anchor-button&quot;].blur();
+            instance._anchorNode.blur();
         }
         else {
             instance._anchorNode.blur();
@@ -166,7 +165,6 @@ class Component extends React.Component {
      */
     componentDidMount() {
         const instance = this;
-        instance._anchorNode = ReactDom.findDOMNode(instance);
         if (instance.props.autoFocus &amp;&amp; !instance.props.buttonLook) {
             instance._focusLater = later(() =&gt; instance.focus(), 50);
         }
@@ -210,7 +208,7 @@ class Component extends React.Component {
     focus(transitionTime) {
         var instance = this;
         if (instance.props.buttonLook) {
-            instance.refs[&quot;anchor-button&quot;].focus(transitionTime);
+            instance._anchorNode.focus(transitionTime);
         }
         else {
             instance._anchorNode.itsa_focus &amp;&amp; instance._anchorNode.itsa_focus(null, null, transitionTime);
@@ -356,7 +354,7 @@ class Component extends React.Component {
                     dangerouslySetInnerHTML={innerHTML}
                     href={props.href}
                     onClick={handleClick}
-                    ref=&quot;anchor-button&quot;
+                    ref={node =&gt; instance._anchorNode = node}
                     target=&quot;_blank&quot; /&gt;
             ) :
             (
@@ -366,6 +364,7 @@ class Component extends React.Component {
                     dangerouslySetInnerHTML={innerHTML}
                     href={props.href}
                     onClick={handleClick}
+                    ref={node =&gt; instance._anchorNode = node}
                     target=&quot;_blank&quot; /&gt;
             );
     }

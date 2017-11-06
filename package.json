@@ -1,6 +1,6 @@
 {
   "name": "itsa-react-filedownloadbutton",
-  "version": "16.0.0",
+  "version": "16.0.4",
   "description": "File downloadbutton, which uses HTML5 saveAs when possible, otherwise a native anchor link",
   "author": [
     {
@@ -33,14 +33,13 @@
     "lib": "./lib"
   },
   "peerDependencies": {
-    "react": ">=15",
-    "react-dom": ">=15"
+    "react": ">=15"
   },
   "dependencies": {
     "itsa-dom": "^1.2.0",
-    "itsa-fetch": "^1.4.0",
+    "itsa-fetch": "^1.4.1",
     "itsa-jsext": "^1.4.0",
-    "itsa-react-anchorbutton": "^16.0.0",
+    "itsa-react-anchorbutton": "^16.0.6",
     "itsa-react-clone-props": "^1.1.0",
     "itsa-utils": "^1.4.0",
     "mime-db": "^1.23.0",

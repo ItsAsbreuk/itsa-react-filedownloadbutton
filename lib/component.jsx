@@ -23,7 +23,6 @@ let SAVEAS_SUPPORT = false,
     saveAs, isSafari;
 
 const React = require("react"),
-    ReactDom = require("react-dom"),
     PropTypes = require("prop-types"),
     cloneProps = require("itsa-react-clone-props"),
     AnchorButton = require("itsa-react-anchorbutton"),
@@ -67,7 +66,7 @@ class Component extends React.Component {
     blur() {
         var instance = this;
         if (instance.props.buttonLook) {
-            instance.refs["anchor-button"].blur();
+            instance._anchorNode.blur();
         }
         else {
             instance._anchorNode.blur();
@@ -83,7 +82,6 @@ class Component extends React.Component {
      */
     componentDidMount() {
         const instance = this;
-        instance._anchorNode = ReactDom.findDOMNode(instance);
         if (instance.props.autoFocus && !instance.props.buttonLook) {
             instance._focusLater = later(() => instance.focus(), 50);
         }
@@ -127,7 +125,7 @@ class Component extends React.Component {
     focus(transitionTime) {
         var instance = this;
         if (instance.props.buttonLook) {
-            instance.refs["anchor-button"].focus(transitionTime);
+            instance._anchorNode.focus(transitionTime);
         }
         else {
             instance._anchorNode.itsa_focus && instance._anchorNode.itsa_focus(null, null, transitionTime);
@@ -273,7 +271,7 @@ class Component extends React.Component {
                     dangerouslySetInnerHTML={innerHTML}
                     href={props.href}
                     onClick={handleClick}
-                    ref="anchor-button"
+                    ref={node => instance._anchorNode = node}
                     target="_blank" />
             ) :
             (
@@ -283,6 +281,7 @@ class Component extends React.Component {
                     dangerouslySetInnerHTML={innerHTML}
                     href={props.href}
                     onClick={handleClick}
+                    ref={node => instance._anchorNode = node}
                     target="_blank" />
             );
     }

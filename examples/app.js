@@ -53,12 +53,12 @@
 	    FileDownloadButton = __webpack_require__(188);
 
 	var props1 = {
-	    autoFocus: true,
 	    href: "http://imageuploader.itsa.io/downloadfile/hello world.pdf",
 	    labelHTML: "Download"
 	};
 
 	var props2 = {
+	    autoFocus: true,
 	    href: "http://imageuploader.itsa.io/downloadfile/hello world.pdf",
 	    labelHTML: "Download",
 	    buttonLook: false
@@ -22953,7 +22953,7 @@
 
 
 	// module
-	exports.push([module.id, "a.itsa-anchorbutton {\n  margin: 0;\n  padding: 0.5em 1em;\n  font: inherit;\n  /* 2 */\n  font-family: inherit;\n  font-size: 100%;\n  color: #444;\n  /* rgba not supported (IE 8) */\n  color: rgba(0, 0, 0, 0.8);\n  /* rgba supported */\n  border: 1px solid #999;\n  /*IE 6/7/8*/\n  border: none transparent;\n  /*IE9 + everything else*/\n  background-color: #E6E6E6;\n  text-decoration: none;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;\n  display: inline-block;\n  position: relative;\n  vertical-align: middle;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  text-transform: none;\n  line-height: normal;\n  white-space: nowrap;\n  vertical-align: middle;\n  text-align: center;\n  cursor: pointer; }\n\na.itsa-anchorbutton:hover, a.itsa-anchorbutton:visited {\n  color: #444;\n  /* rgba not supported (IE 8) */\n  color: rgba(0, 0, 0, 0.8);\n  /* rgba supported */ }\n\na.itsa-anchorbutton.readonly {\n  cursor: default; }\n\na.itsa-anchorbutton-primary {\n  background-color: #0078E7;\n  color: #FFF; }\n\na.itsa-anchorbutton:hover:not(.readonly), a.itsa-anchorbutton.itsa-anchorbutton-hover:not(.readonly), a.itsa-anchorbutton:hover:focus:not(.readonly), a.itsa-anchorbutton.itsa-anchorbutton-hover:focus:not(.readonly) {\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset; }\n\na.itsa-anchorbutton:focus {\n  outline: 0; }\n\na.itsa-anchorbutton:focus:not(.readonly) {\n  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000',GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset; }\n\na.itsa-anchorbutton::-moz-focus-inner {\n  /* firefox focusring */\n  border: 0; }\n\na.itsa-anchorbutton-active:not(.readonly) {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px rgba(0, 0, 0, 0.4) inset; }\n\na.itsa-anchorbutton:not(.readonly):active:hover, a.itsa-anchorbutton:not(.readonly).itsa-anchorbutton-hover:active, a.itsa-anchorbutton:not(.readonly):active:focus, a.itsa-anchorbutton:not(.readonly):active:hover:focus, a.itsa-anchorbutton:not(.readonly).itsa-anchorbutton-hover:active:focus, a.itsa-anchorbutton-active:not(.readonly):hover, a.itsa-anchorbutton-active:not(.readonly).itsa-anchorbutton-hover, a.itsa-anchorbutton-active:not(.readonly):focus, a.itsa-anchorbutton-active:not(.readonly):hover:focus, a.itsa-anchorbutton-active:not(.readonly).itsa-anchorbutton-hover:focus {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px black inset; }\n\na.itsa-anchorbutton[disabled], a.itsa-anchorbutton[disabled]:focus, a.itsa-anchorbutton[disabled]:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-hover, a.itsa-anchorbutton[disabled]:active, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active, a.itsa-anchorbutton[disabled]:active:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-hover:active, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active.itsa-anchorbutton-hover, a.itsa-anchorbutton[disabled]:active:focus, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active:focus, a.itsa-anchorbutton[disabled]:active:focus:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-hover:active:focus, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active:focus:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-hover.itsa-anchorbutton-active:focus {\n  border: none;\n  background-image: none !important;\n  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);\n  filter: alpha(opacity=60);\n  -khtml-opacity: 0.6;\n  -moz-opacity: 0.6;\n  opacity: 0.6;\n  cursor: not-allowed;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset !important;\n  cursor: default; }\n\na.itsa-button-smoothrounded, a.itsa-anchorbutton-smoothrounded {\n  border-radius: 2px; }\n\na.itsa-button-rounded, a.itsa-anchorbutton-rounded {\n  border-radius: 0.3em; }\n\na.itsa-button-heavyrounded, a.itsa-anchorbutton-heavyrounded {\n  border-radius: 0.5em; }\n\na.itsa-button-oval, a.itsa-anchorbutton-oval {\n  border-radius: 50%; }\n\na.itsa-button-halfoval, a.itsa-anchorbutton-halfoval {\n  border-radius: 25%; }\n", ""]);
+	exports.push([module.id, "a.itsa-anchorbutton {\n  margin: 0;\n  padding: 0.5em 1em;\n  font: inherit;\n  /* 2 */\n  font-family: inherit;\n  font-size: 100%;\n  color: #444;\n  /* rgba not supported (IE 8) */\n  color: rgba(0, 0, 0, 0.8);\n  /* rgba supported */\n  border: 1px solid #999;\n  /* IE 6/7/8 */\n  border: none transparent;\n  /* IE9 + everything else */\n  background-color: #E6E6E6;\n  text-decoration: none;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset;\n  display: inline-block;\n  position: relative;\n  -webkit-box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  box-sizing: border-box;\n  -webkit-touch-callout: none;\n  -webkit-user-select: none;\n  -khtml-user-select: none;\n  -moz-user-select: none;\n  -ms-user-select: none;\n  user-select: none;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  text-transform: none;\n  line-height: normal;\n  white-space: nowrap;\n  vertical-align: middle;\n  text-align: center;\n  cursor: pointer; }\n\na.itsa-anchorbutton:hover, a.itsa-anchorbutton:visited {\n  color: #444;\n  /* rgba not supported (IE 8) */\n  color: rgba(0, 0, 0, 0.8);\n  /* rgba supported */ }\n\na.itsa-anchorbutton.readonly {\n  cursor: default; }\n\na.itsa-anchorbutton-primary {\n  background-color: #0078E7;\n  color: #FFF; }\n\na.itsa-anchorbutton:hover:not(.readonly), a.itsa-anchorbutton.itsa-anchorbutton-hover:not(.readonly), a.itsa-anchorbutton:hover:focus:not(.readonly), a.itsa-anchorbutton.itsa-anchorbutton-hover:focus:not(.readonly) {\n  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000', GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.15)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.15));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset; }\n\na.itsa-anchorbutton:focus {\n  outline: 0; }\n\na.itsa-anchorbutton:focus:not(.readonly) {\n  filter: progid:dximagetransform.microsoft.gradient(startColorstr='#00000000', endColorstr='#1a000000', GradientType=0);\n  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(transparent), color-stop(40%, rgba(0, 0, 0, 0.05)), to(rgba(0, 0, 0, 0.1)));\n  background-image: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  background-image: linear-gradient(transparent, rgba(0, 0, 0, 0.05) 40%, rgba(0, 0, 0, 0.1));\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.6) inset; }\n\na.itsa-anchorbutton::-moz-focus-inner {\n  /* firefox focusring */\n  border: 0; }\n\na.itsa-anchorbutton-active:not(.readonly) {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px rgba(0, 0, 0, 0.4) inset; }\n\na.itsa-anchorbutton:not(.readonly):active:hover, a.itsa-anchorbutton:not(.readonly).itsa-anchorbutton-hover:active, a.itsa-anchorbutton:not(.readonly):active:focus, a.itsa-anchorbutton:not(.readonly):active:hover:focus, a.itsa-anchorbutton:not(.readonly).itsa-anchorbutton-hover:active:focus, a.itsa-anchorbutton-active:not(.readonly):hover, a.itsa-anchorbutton-active:not(.readonly).itsa-anchorbutton-hover, a.itsa-anchorbutton-active:not(.readonly):focus, a.itsa-anchorbutton-active:not(.readonly):hover:focus, a.itsa-anchorbutton-active:not(.readonly).itsa-anchorbutton-hover:focus {\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.8) inset, 0 0 10px black inset; }\n\na.itsa-anchorbutton[disabled], a.itsa-anchorbutton[disabled]:focus, a.itsa-anchorbutton[disabled]:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-hover, a.itsa-anchorbutton[disabled]:active, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active, a.itsa-anchorbutton[disabled]:active:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-hover:active, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active.itsa-anchorbutton-hover, a.itsa-anchorbutton[disabled]:active:focus, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active:focus, a.itsa-anchorbutton[disabled]:active:focus:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-hover:active:focus, a.itsa-anchorbutton[disabled].itsa-anchorbutton-active:focus:hover, a.itsa-anchorbutton[disabled].itsa-anchorbutton-hover.itsa-anchorbutton-active:focus {\n  border: none;\n  background-image: none !important;\n  filter: progid:dximagetransform.microsoft.gradient(enabled = false);\n  filter: alpha(opacity=60);\n  -khtml-opacity: 0.6;\n  -moz-opacity: 0.6;\n  opacity: 0.6;\n  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset !important;\n  cursor: default; }\n\na.itsa-button-smoothrounded, a.itsa-anchorbutton-smoothrounded {\n  border-radius: 2px; }\n\na.itsa-button-rounded, a.itsa-anchorbutton-rounded {\n  border-radius: 0.3em; }\n\na.itsa-button-heavyrounded, a.itsa-anchorbutton-heavyrounded {\n  border-radius: 0.5em; }\n\na.itsa-button-oval, a.itsa-anchorbutton-oval {\n  border-radius: 50%; }\n\na.itsa-button-halfoval, a.itsa-anchorbutton-halfoval {\n  border-radius: 25%; }\n", ""]);
 
 	// exports
 
@@ -23305,7 +23305,6 @@
 	    isSafari = void 0;
 
 	var React = __webpack_require__(6),
-	    ReactDom = __webpack_require__(41),
 	    PropTypes = __webpack_require__(218),
 	    cloneProps = __webpack_require__(220),
 	    AnchorButton = __webpack_require__(221),
@@ -23359,7 +23358,7 @@
 	        value: function blur() {
 	            var instance = this;
 	            if (instance.props.buttonLook) {
-	                instance.refs["anchor-button"].blur();
+	                instance._anchorNode.blur();
 	            } else {
 	                instance._anchorNode.blur();
 	            }
@@ -23377,7 +23376,6 @@
 	        key: "componentDidMount",
 	        value: function componentDidMount() {
 	            var instance = this;
-	            instance._anchorNode = ReactDom.findDOMNode(instance);
 	            if (instance.props.autoFocus && !instance.props.buttonLook) {
 	                instance._focusLater = later(function () {
 	                    return instance.focus();
@@ -23436,7 +23434,7 @@
 	        value: function focus(transitionTime) {
 	            var instance = this;
 	            if (instance.props.buttonLook) {
-	                instance.refs["anchor-button"].focus(transitionTime);
+	                instance._anchorNode.focus(transitionTime);
 	            } else {
 	                instance._anchorNode.itsa_focus && instance._anchorNode.itsa_focus(null, null, transitionTime);
 	            }
@@ -23591,12 +23589,17 @@
 	                dangerouslySetInnerHTML: innerHTML,
 	                href: props.href,
 	                onClick: handleClick,
-	                ref: "anchor-button",
+	                ref: function ref(node) {
+	                    return instance._anchorNode = node;
+	                },
 	                target: "_blank" })) : React.createElement("a", _extends({}, passProps, {
 	                className: className + FORM_ELEMENT_CLASS_SPACES,
 	                dangerouslySetInnerHTML: innerHTML,
 	                href: props.href,
 	                onClick: handleClick,
+	                ref: function ref(node) {
+	                    return instance._anchorNode = node;
+	                },
 	                target: "_blank" }));
 	        }
 	    }]);
